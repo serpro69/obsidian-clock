@@ -1,0 +1,61 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  transition: all 0.4s;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 300;
+}
+
+.clock {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  width: 280px;
+  height: 100px;
+}
+
+.block {
+  width: calc(100% / 12);
+  height: 20%;
+  color: #4C566A;
+  transition: 0.4s;
+}
+.block:not(:nth-child(n+16)):nth-child(n+11), .block:not(:nth-child(n+46)):nth-child(n+41) {
+  margin-right: 10px;
+}
+.block:not(:nth-child(n+31)):nth-child(n+26) {
+  margin-right: 20px;
+}
+.block:before {
+  content: attr(data-num);
+  position: relative;
+  display: block;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  line-height: 20px;
+  text-align: center;
+}
+.block:nth-child(-n+10):before {
+  content: "0" attr(data-num);
+}
+.block.active:before {
+  color: #ECEFF4;
+  font-weight: 500;
+}
+.block.second:before {
+  color: #D08770;
+}
+
+.divider {
+  position: absolute;
+  width: 2px;
+  background-color: #D8DEE9;
+  height: 60%;
+  top: 20%;
+  left: calc(50% + 19px);
+}
